@@ -11,7 +11,7 @@ const Auth = (): JSX.Element => {
 			dispatch(fetchHotels());
 			setNeedFetchHotels(false);
 		}
-	});
+	}, [needFetchHotels, dispatch]);
 
 	const onAuthButtonClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
 		evt.preventDefault();
