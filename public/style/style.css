@@ -212,6 +212,10 @@ body {
 	margin: 4px 4px 4px 8px;
 }
 
+.filter-disabled {
+	opacity: 0.3;
+}
+
 .favorites__toggles {
 	display: flex;
 	flex-direction: column;

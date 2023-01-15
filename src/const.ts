@@ -9,4 +9,14 @@ enum NameSpace {
 	User = 'USER',
 }
 
-export { AppRoute, NameSpace };
+enum FilterTypes {
+	Rating = 'rating',
+	Price = 'price',
+}
+
+enum FilterOrders {
+	Asc = 'asc',
+	Desc = 'desc',
+}
+
+export { AppRoute, NameSpace, FilterOrders, FilterTypes };
