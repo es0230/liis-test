@@ -3,29 +3,32 @@ import Rating from '@mui/material/Rating';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { Hotel } from '../../../types/hotels';
-import { useAppSelector } from '../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { selectCheckIn, selectDuration } from '../../../store/app-data/selectors';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
+import { getNumberedString } from '../../../const';
+import { addToFavorites, deleteFromFavorites } from '../../../store/app-data/app-data';
+import { FavoriteHotel } from '../../../types/favorite-hotel';
 
 type HotelsItemProps = {
 	hotel: Hotel,
+	isFavorite: boolean,
 }
 
-const HotelsItem = ({ hotel }: HotelsItemProps): JSX.Element => {
+const HotelsItem = ({ hotel, isFavorite }: HotelsItemProps): JSX.Element => {
 	const { hotelName, stars, priceFrom } = hotel;
 
+	const dispatch = useAppDispatch();
 	const duration = useAppSelector(selectDuration);
 	const checkIn = useAppSelector(selectCheckIn);
-
-	const getDurationString = (duration: number) => {
-		if (`${duration}`.at(-1) === '0' || (duration >= 5 && duration <= 19)) {
-			return `${duration} дней`;
+	const handleFavoritesClick = (evt: React.MouseEvent<HTMLDivElement>) => {
+		const favoriteHotel: FavoriteHotel = { hotel, checkIn, duration };
+		if (!isFavorite) {
+			dispatch(addToFavorites(favoriteHotel));
+		} else {
+			dispatch(deleteFromFavorites(favoriteHotel));
 		}
-		if (`${duration}`.at(-1) === '2' || `${duration}`.at(-1) === '3' || `${duration}`.at(-1) === '4') {
-			return `${duration} дня`;
-		}
-		return `${duration} день`;
 	};
 
 	return (
@@ -36,15 +39,16 @@ const HotelsItem = ({ hotel }: HotelsItemProps): JSX.Element => {
 			<div className="hotels__item-content">
 				<div className="hotels__item-header">
 					<p className="hotels__title">{hotelName}</p>
-					<div className="hotels__is-favorite">
-						<FavoriteBorderOutlinedIcon sx={{ color: '#C4C4C4' }} className="clickable" />
-						{/*<FavoriteIcon sx={{ color: '#E55858' }} />*/}
+					<div onClick={handleFavoritesClick} className="hotels__is-favorite">
+						{isFavorite ?
+							<FavoriteIcon sx={{ color: '#E55858' }} className="clickable" /> :
+							<FavoriteBorderOutlinedIcon sx={{ color: '#C4C4C4' }} className="clickable" />}
 					</div>
 				</div>
 				<div className="hotels__item-main">
 					<p className="hotels__date">{dayjs(checkIn).locale('ru').format('DD MMMM, YYYY')}</p>
 					<span>—</span>
-					<p className="hotels__duration">{getDurationString(duration)}</p>
+					<p className="hotels__duration">{getNumberedString(duration, ['день', 'дня', 'дней'])}</p>
 				</div>
 				<div className="hotels__item-footer">
 					<div className="hotels__rating">
@@ -52,7 +56,7 @@ const HotelsItem = ({ hotel }: HotelsItemProps): JSX.Element => {
 					</div>
 					<div className="hotels__price">
 						<div className="hotels__price-text">Цена:</div>
-						<div className="hotels__price-value">{priceFrom}</div>
+						<div className="hotels__price-value">{priceFrom} ₽</div>
 					</div>
 				</div>
 			</div>

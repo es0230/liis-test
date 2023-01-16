@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import { NameSpace } from '../../const';
+import { FavoriteHotel } from '../../types/favorite-hotel';
 import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 import { RootState } from '../../types/state';
@@ -13,6 +14,8 @@ export const selectHotels = (state: RootState): Hotel[] => state[NameSpace.Data]
 export const selectCheckIn = (state: RootState): string => state[NameSpace.Data].checkIn;
 
 export const selectDuration = (state: RootState): number => state[NameSpace.Data].duration;
+
+export const selectFavoriteHotels = (state: RootState): FavoriteHotel[] => state[NameSpace.Data].favoriteHotels;
 
 export const selectURLRequest = (state: RootState): string => {
 	const { location, checkIn, duration } = state[NameSpace.Data];

@@ -1,29 +1,45 @@
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Rating from '@mui/material/Rating';
+import { getNumberedString } from '../../../const';
+import dayjs from 'dayjs';
+import 'dayjs/locale/ru';
+import { FavoriteHotel } from '../../../types/favorite-hotel';
+import { deleteFromFavorites } from '../../../store/app-data/app-data';
+import { useAppDispatch } from '../../../hooks/hooks';
 
-const FavoritesItem = (): JSX.Element => {
+type FavoritesItemProps = {
+	hotel: FavoriteHotel,
+}
+
+const FavoritesItem = ({ hotel }: FavoritesItemProps): JSX.Element => {
+	const { hotel: { hotelName, stars, priceFrom }, checkIn, duration } = hotel;
+
+	const dispatch = useAppDispatch();
+
+	const handleFavoritesClick = (evt: React.MouseEvent<HTMLDivElement>) => {
+		dispatch(deleteFromFavorites(hotel));
+	};
+
 	return (
 		<div className="favorites__item">
 			<div className="favorites__item-header">
-				<p className="favorites__title">Moscow Mariott Grand Hotel</p>
-				<div className="favorites__is-favorite">
+				<p className="favorites__title">{hotelName}</p>
+				<div onClick={handleFavoritesClick} className="favorites__is-favorite">
 					<FavoriteIcon className="clickable" sx={{ color: '#E55858' }} />
-					{/*<FavoriteBorderOutlinedIcon />*/}
 				</div>
 			</div>
 			<div className="favorites__item-main">
-				<p className="favorites__date">28 июня 2020</p>
+				<p className="favorites__date">{dayjs(checkIn).locale('ru').format('DD MMMM, YYYY')}</p>
 				<span>—</span>
-				<p className="favorites__duration">1 день</p>
+				<p className="favorites__duration">{getNumberedString(duration, ['день', 'дня', 'дней'])}</p>
 			</div>
 			<div className="favorites__item-footer">
 				<div className="favorites__rating">
-					<Rating name="hotel-rating" value={2} />
+					<Rating readOnly name="hotel-rating" value={stars} />
 				</div>
 				<div className="favorites__price">
-					<div className="favorites__price-text">Price:</div>
-					<div className="favorites__price-value">23 924 ₽</div>
+					<div className="favorites__price-text">Цена:</div>
+					<div className="favorites__price-value">{priceFrom} ₽</div>
 				</div>
 			</div>
 		</div>
