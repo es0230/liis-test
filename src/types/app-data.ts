@@ -1,4 +1,5 @@
 import { FavoriteHotel } from './favorite-hotel';
+import { FavoritesFilter } from './favorites-filter';
 import { Hotel } from './hotels';
 
 export type AppData = {
@@ -7,4 +8,5 @@ export type AppData = {
 	duration: number,
 	hotels: Hotel[],
 	favoriteHotels: FavoriteHotel[],
+	favoritesFilter: FavoritesFilter,
 };

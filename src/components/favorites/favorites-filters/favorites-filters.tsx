@@ -1,18 +1,16 @@
-import { useState } from 'react';
 import { FilterOrders, FilterTypes } from '../../../const';
-import { FavoritesFilter } from '../../../types/favorites-filter';
-
-const initialFilter: FavoritesFilter = {
-	type: FilterTypes.Rating,
-	order: FilterOrders.Asc
-}
+import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
+import { setFavoritesFilter } from '../../../store/app-data/app-data';
+import { selectFavoritesFilter } from '../../../store/app-data/selectors';
 
 const FavoritesFilters = (): JSX.Element => {
-	const [favoritesFilter, setFavoritesFilter] = useState<FavoritesFilter>(initialFilter);
+	const dispatch = useAppDispatch();
+
+	const favoritesFilter = useAppSelector(selectFavoritesFilter);
 
 	const handleRatingToggleClick = (evt: React.MouseEvent<HTMLDivElement>) => {
 		const { toggleType, toggleOrder } = evt.currentTarget.dataset;
-		setFavoritesFilter({ type: toggleType as FilterTypes, order: toggleOrder as FilterOrders });
+		dispatch(setFavoritesFilter({ type: toggleType as FilterTypes, order: toggleOrder as FilterOrders }));
 	}
 
 	return (

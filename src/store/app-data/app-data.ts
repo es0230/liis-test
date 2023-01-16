@@ -1,8 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import dayjs from 'dayjs'
-import { NameSpace } from '../../const'
+import { FilterOrders, FilterTypes, NameSpace } from '../../const'
 import { AppData } from '../../types/app-data';
 import { FavoriteHotel } from '../../types/favorite-hotel';
+import { FavoritesFilter } from '../../types/favorites-filter';
 import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 
@@ -12,6 +13,10 @@ const initialState: AppData = {
 	duration: 1,
 	hotels: [],
 	favoriteHotels: [],
+	favoritesFilter: {
+		type: FilterTypes.Rating,
+		order: FilterOrders.Asc
+	}
 }
 
 
@@ -29,6 +34,9 @@ export const appData = createSlice({
 				...state.favoriteHotels.slice(target + 1),
 			]
 		},
+		setFavoritesFilter: (state, action: PayloadAction<FavoritesFilter>) => {
+			state.favoritesFilter = action.payload;
+		},
 		setQueryData: (state, action: PayloadAction<QueryData>) => {
 			const { location, checkIn, duration } = action.payload;
 			state.location = location;
@@ -44,4 +52,4 @@ export const appData = createSlice({
 	},
 });
 
-export const { addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+export const { setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
