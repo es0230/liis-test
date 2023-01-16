@@ -19,4 +19,10 @@ enum FilterOrders {
 	Desc = 'desc',
 }
 
-export { AppRoute, NameSpace, FilterOrders, FilterTypes };
+enum QueryFormFields {
+	Location = 'location',
+	CheckIn = 'checkIn',
+	Duration = 'duration',
+}
+
+export { QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
