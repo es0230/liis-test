@@ -35,4 +35,6 @@ const getNumberedString = (duration: number, [w1, w2, w5]: string[]) => {
 	return `${duration} ${w1}`;
 };
 
-export { getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
+const LOCAL_STORAGE_KEY = 'auth';
+
+export { LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
