@@ -48,8 +48,19 @@ export const appData = createSlice({
 		},
 		fetchHotels: (state) => {
 			return state;
+		},
+		resetState: (state) => {
+			state.location = 'Moscow';
+			state.checkIn = dayjs().format('YYYY-MM-DD');
+			state.duration = 1;
+			state.hotels = [];
+			state.favoriteHotels = [];
+			state.favoritesFilter = {
+				type: FilterTypes.Rating,
+				order: FilterOrders.Asc
+			};
 		}
 	},
 });
 
-export const { setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+export const { resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;

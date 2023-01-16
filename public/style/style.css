@@ -17,7 +17,7 @@ body {
 
 .input {
 	width: 100%;
-	height: 50px;
+	height: 40px;
 	box-sizing: border-box;
 	border: 1px solid #C9CACC;
 	border-radius: 4px;
@@ -98,10 +98,30 @@ body {
 	box-sizing: border-box;
 	border: 1px solid #C9CACC;
 	border-radius: 4px;
+	font-weight: 300;
+	font-size: 16px;
 }
 
 .auth__submit {
 	margin: 16px 32px 32px 32px;
+}
+
+.invalid-label {
+	color: #EB1717;
+}
+
+.invalid-input {
+	color: #EB1717;
+}
+
+.auth__input-error {
+	float: left;
+	color: #EB1717;
+	margin: 0;
+	margin-top: -7px;
+	margin-bottom: -14px;
+	font-weight: 300;
+	font-size: 12px;
 }
 
 /*Checker page*/
@@ -143,7 +163,25 @@ body {
 	display: flex;
 	justify-content: center;
 	gap: 24px;
-	min-width: 50vw;
+	width: 50vw;
+}
+
+@media screen and (max-width: 1400px) {
+	.checker__content-wrapper {
+		width: 70vw;
+	}
+}
+
+@media screen and (max-width: 1200px) {
+	.checker__content-wrapper {
+		width: 80vw;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.checker__content-wrapper {
+		width: 90vw;
+	}
 }
 
 .checker__content {

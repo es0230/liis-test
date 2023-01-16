@@ -13,6 +13,14 @@ export const loadState = () => {
 	}
 };
 
+export const deleteState = () => {
+	try {
+		localStorage.removeItem(LOCAL_STORAGE_KEY);
+	} catch (err) {
+		return undefined;
+	}
+}
+
 export async function saveState(state: RootState) {
 	try {
 		const serializedState = JSON.stringify(state);

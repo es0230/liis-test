@@ -35,6 +35,14 @@ const getNumberedString = (duration: number, [w1, w2, w5]: string[]) => {
 	return `${duration} ${w1}`;
 };
 
+enum AuthDataFields {
+	Email = 'email',
+	Password = 'password',
+}
+
 const LOCAL_STORAGE_KEY = 'auth';
 
-export { LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
+const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const PASSWORD_REGEXP = /^(?=.*[a-zA-Z0-9])(?=.{8,}$)/;
+
+export { EMAIL_REGEXP, PASSWORD_REGEXP, AuthDataFields, LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
