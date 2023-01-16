@@ -1,11 +1,18 @@
 import dayjs from 'dayjs';
 import { NameSpace } from '../../const';
+import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 import { RootState } from '../../types/state';
 
 const CURRENCY = 'rub';
 
 export const selectCity = (state: RootState): string => state[NameSpace.Data].location;
+
+export const selectHotels = (state: RootState): Hotel[] => state[NameSpace.Data].hotels;
+
+export const selectCheckIn = (state: RootState): string => state[NameSpace.Data].checkIn;
+
+export const selectDuration = (state: RootState): number => state[NameSpace.Data].duration;
 
 export const selectURLRequest = (state: RootState): string => {
 	const { location, checkIn, duration } = state[NameSpace.Data];
@@ -16,6 +23,7 @@ export const selectURLRequest = (state: RootState): string => {
 };
 
 export const selectInitialQueryData = (state: RootState): QueryData => {
-	const { location, checkIn, duration } = state[NameSpace.Data]
+	const { location, checkIn, duration } = state[NameSpace.Data];
+
 	return { location, checkIn, duration };
 };
