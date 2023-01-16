@@ -432,6 +432,13 @@ body {
 	gap: 12px;
 }
 
+.checker__no-hotels {
+	justify-content: center;
+	overflow: hidden;
+	height: 100%;
+	align-items: center;
+}
+
 .favorites__list,
 .hotels__list {
 	overflow: auto;

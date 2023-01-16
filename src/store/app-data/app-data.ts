@@ -49,6 +49,9 @@ export const appData = createSlice({
 		fetchHotels: (state) => {
 			return state;
 		},
+		resetHotels: (state) => {
+			state.hotels = [];
+		},
 		resetState: (state) => {
 			state.location = 'Moscow';
 			state.checkIn = dayjs().format('YYYY-MM-DD');
@@ -63,4 +66,4 @@ export const appData = createSlice({
 	},
 });
 
-export const { resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+export const { resetHotels, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
