@@ -420,8 +420,13 @@ body {
 .checker__photo-slider {
 	margin: 14px 32px;
 	height: 150px;
-	background-color: #41522E;
 	flex-shrink: 0;
+}
+
+.carousel__item {
+	height: 150px;
+	width: 165px;
+	border-radius: 10px;
 }
 
 .checker__hotels-list {
