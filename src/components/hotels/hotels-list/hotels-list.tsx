@@ -1,6 +1,6 @@
 import { getNumberedString } from '../../../const';
 import { useAppSelector } from '../../../hooks/hooks';
-import { selectCheckIn, selectFavoriteHotels, selectHotels } from '../../../store/app-data/selectors';
+import { selectCheckIn, selectDuration, selectFavoriteHotels, selectHotels } from '../../../store/app-data/selectors';
 import Divider from '../../divider/divider';
 import HotelsItem from '../hotels-item/hotels-item';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -9,6 +9,7 @@ const HotelsList = (): JSX.Element => {
 	const hotels = useAppSelector(selectHotels);
 	const favoriteHotels = useAppSelector(selectFavoriteHotels);
 	const checkIn = useAppSelector(selectCheckIn);
+	const duration = useAppSelector(selectDuration);
 
 	return (
 		<div className={`checker__hotels-list ${hotels.length === 0 ? 'checker__no-hotels' : ''}`}>
@@ -24,7 +25,7 @@ const HotelsList = (): JSX.Element => {
 								<>
 									<HotelsItem
 										hotel={el}
-										isFavorite={favoriteHotels.some((favHotel) => favHotel.hotel.hotelId === el.hotelId && favHotel.checkIn === checkIn)}
+										isFavorite={favoriteHotels.some((favHotel) => favHotel.hotel.hotelId === el.hotelId && favHotel.checkIn === checkIn && favHotel.duration === duration)}
 										key={el.hotelId}
 									/>
 									{i < arr.length - 1 ? <Divider /> : <></>}
