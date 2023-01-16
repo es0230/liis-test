@@ -1,17 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { QueryFormFields } from '../../const';
-import { useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { fetchHotels, setQueryData } from '../../store/app-data/app-data';
 import { selectInitialQueryData } from '../../store/app-data/selectors';
 import { QueryData } from '../../types/query-data';
 
 const QueryForm = (): JSX.Element => {
+	const dispatch = useAppDispatch();
 	const initialQueryData = useAppSelector(selectInitialQueryData);
 
 	const [queryForm, setQueryForm] = useState<QueryData>(initialQueryData);
+	const [needFetchHotels, setNeedFetchHotels] = useState(false);
+
+	useEffect(() => {
+		if (needFetchHotels) {
+			dispatch(fetchHotels());
+			setNeedFetchHotels(false);
+		}
+	}, [needFetchHotels, dispatch])
 
 	const handleQueryFormFieldChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = evt.currentTarget;
 		setQueryForm({ ...queryForm, [name]: value });
+	};
+
+	const handleQuerySending = (evt: React.MouseEvent<HTMLButtonElement>) => {
+		evt.preventDefault();
+		dispatch(setQueryData(queryForm));
+		setNeedFetchHotels(true);
 	}
 
 	return (
@@ -30,7 +46,7 @@ const QueryForm = (): JSX.Element => {
 					<input onChange={handleQueryFormFieldChange} value={queryForm.duration} type="text" className="query-form__input input" name={QueryFormFields.Duration} />
 				</div>
 			</div>
-			<button className="query-form__submit submit-button clickable">Найти</button>
+			<button onClick={handleQuerySending} className="query-form__submit submit-button clickable">Найти</button>
 		</form>
 	);
 };

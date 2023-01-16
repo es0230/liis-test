@@ -8,11 +8,7 @@ import { setHotels, fetchHotels } from '../store/app-data/app-data';
 
 const api = createAPI();
 
-type GetHotelsResponse = {
-	data: Hotel[];
-};
-
-const fetchHotelsData = () => api.get<GetHotelsResponse>(selectURLRequest(store.getState()));
+const fetchHotelsData = () => api.get<Hotel[]>(selectURLRequest(store.getState()));
 
 function* fetchHotelsWorker() {
 	const { data } = yield* call(fetchHotelsData);
