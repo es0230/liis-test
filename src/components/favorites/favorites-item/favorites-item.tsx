@@ -1,4 +1,3 @@
-import FavoriteIcon from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 import { getNumberedString } from '../../../const';
 import dayjs from 'dayjs';
@@ -6,6 +5,7 @@ import 'dayjs/locale/ru';
 import { FavoriteHotel } from '../../../types/favorite-hotel';
 import { deleteFromFavorites } from '../../../store/app-data/app-data';
 import { useAppDispatch } from '../../../hooks/hooks';
+import HeartFilled from '../../svg/heart-filled';
 
 type FavoritesItemProps = {
 	hotel: FavoriteHotel,
@@ -25,7 +25,7 @@ const FavoritesItem = ({ hotel }: FavoritesItemProps): JSX.Element => {
 			<div className="favorites__item-header">
 				<p className="favorites__title">{hotelName}</p>
 				<div onClick={handleFavoritesClick} className="favorites__is-favorite">
-					<FavoriteIcon className="clickable" sx={{ color: '#E55858' }} />
+					<HeartFilled className="clickable" />
 				</div>
 			</div>
 			<div className="favorites__item-main">
@@ -35,7 +35,7 @@ const FavoritesItem = ({ hotel }: FavoritesItemProps): JSX.Element => {
 			</div>
 			<div className="favorites__item-footer">
 				<div className="favorites__rating">
-					<Rating readOnly name="hotel-rating" value={stars} />
+					<Rating readOnly name="hotel-rating" size="small" value={stars} />
 				</div>
 				<div className="favorites__price">
 					<div className="favorites__price-text">Цена:</div>

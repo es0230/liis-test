@@ -4,6 +4,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { fetchHotels, resetHotels, setQueryData } from '../../store/app-data/app-data';
 import { selectInitialQueryData } from '../../store/app-data/selectors';
 import { QueryData } from '../../types/query-data';
+import dayjs from 'dayjs';
 
 const QueryForm = (): JSX.Element => {
 	const dispatch = useAppDispatch();
@@ -40,7 +41,7 @@ const QueryForm = (): JSX.Element => {
 				</div>
 				<div className="query-form__input-wrapper input-wrapper">
 					<label htmlFor={QueryFormFields.CheckIn} className="query-form__label">Дата заселения</label>
-					<input onChange={handleQueryFormFieldChange} value={queryForm.checkIn} type="date" className="query-form__input input" name={QueryFormFields.CheckIn} />
+					<input onChange={handleQueryFormFieldChange} value={queryForm.checkIn} type="date" min={dayjs().format('YYYY-MM-DD')} className="query-form__input input" name={QueryFormFields.CheckIn} />
 				</div>
 				<div className="query-form__input-wrapper input-wrapper">
 					<label htmlFor={QueryFormFields.Duration} className="query-form__label">Количество дней</label>

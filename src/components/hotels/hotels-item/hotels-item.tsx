@@ -1,7 +1,5 @@
 import HouseIcon from '../../svg/house';
 import Rating from '@mui/material/Rating';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import { Hotel } from '../../../types/hotels';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hooks';
 import { selectCheckIn, selectDuration } from '../../../store/app-data/selectors';
@@ -10,6 +8,8 @@ import 'dayjs/locale/ru';
 import { getNumberedString } from '../../../const';
 import { addToFavorites, deleteFromFavorites } from '../../../store/app-data/app-data';
 import { FavoriteHotel } from '../../../types/favorite-hotel';
+import HeartBorder from '../../svg/heart-border';
+import HeartFilled from '../../svg/heart-filled';
 
 type HotelsItemProps = {
 	hotel: Hotel,
@@ -41,8 +41,9 @@ const HotelsItem = ({ hotel, isFavorite }: HotelsItemProps): JSX.Element => {
 					<p className="hotels__title">{hotelName}</p>
 					<div onClick={handleFavoritesClick} className="hotels__is-favorite">
 						{isFavorite ?
-							<FavoriteIcon sx={{ color: '#E55858' }} className="clickable" /> :
-							<FavoriteBorderOutlinedIcon sx={{ color: '#C4C4C4' }} className="clickable" />}
+							<HeartFilled className="clickable" /> :
+							<HeartBorder className="hotels__is-favorite-icon clickable" />
+						}
 					</div>
 				</div>
 				<div className="hotels__item-main">
