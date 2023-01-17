@@ -8,7 +8,7 @@ import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 
 const initialState: AppData = {
-	location: 'Moscow',
+	location: 'Москва',
 	checkIn: dayjs().format('YYYY-MM-DD'),
 	duration: 1,
 	hotels: [],
@@ -53,7 +53,7 @@ export const appData = createSlice({
 			state.hotels = [];
 		},
 		resetState: (state) => {
-			state.location = 'Moscow';
+			state.location = 'Москва';
 			state.checkIn = dayjs().format('YYYY-MM-DD');
 			state.duration = 1;
 			state.hotels = [];

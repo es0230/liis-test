@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute, AuthDataFields, EMAIL_REGEXP, PASSWORD_REGEXP } from '../../const';
 import { useAppDispatch } from '../../hooks/hooks';
+import { fetchHotels } from '../../store/app-data/app-data';
 import { logIn } from '../../store/user-data/user-data';
 import { AuthData } from '../../types/auth-data';
 
@@ -37,6 +38,7 @@ const AuthForm = (): JSX.Element => {
 	const handleAuthButtonClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
 		evt.preventDefault();
 		dispatch(logIn());
+		dispatch(fetchHotels());
 		navigate(AppRoute.Checker);
 		setAuthData(initialAuthData);
 		setAuthValid(initialAuthValid);

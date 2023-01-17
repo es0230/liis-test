@@ -1,7 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { NameSpace } from '../../const';
+import { UserData } from '../../types/user-data';
 
-const initialState = {
+const initialState: UserData = {
 	isAuthorized: false,
 };
 
