@@ -22,7 +22,7 @@ const HotelsList = (): JSX.Element => {
 		);
 	}
 
-	if (!hotelsFetchFailed && hotels.length === 0) {
+	if (!hotelsFetchFailed && !hotelsLoading && hotels.length === 0) {
 		return (
 			<div className="checker__hotels-list checker__no-hotels">
 				По данному запросу нет отелей (O_O;)<br />
