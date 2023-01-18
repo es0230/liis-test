@@ -20,7 +20,7 @@ export const selectFavoriteHotels = (state: RootState): FavoriteHotel[] => state
 
 export const selectFavoritesFilter = (state: RootState): FavoritesFilter => state[NameSpace.Data].favoritesFilter;
 
-//export const selectHotelsCarouselImages = (state: RootState): string[] => state[NameSpace.Data].hotelsCarouselImages;
+export const selectHotelsCarouselImages = (state: RootState): string[] => state[NameSpace.Data].hotelsCarouselImages;
 
 export const selectURLRequest = (state: RootState): string => {
 	const { location, checkIn, duration } = state[NameSpace.Data];
