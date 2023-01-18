@@ -14,7 +14,7 @@ const HotelsList = (): JSX.Element => {
 	return (
 		<div className={`checker__hotels-list ${hotels.length === 0 ? 'checker__no-hotels' : ''}`}>
 			{hotels.length === 0 ?
-				<CircularProgress /> :
+				<CircularProgress sx={{ color: 'var(--accent-color)' }} /> :
 				<>
 					<div className="hotels__favorite-count">
 						Добавлено в Избранное: {getNumberedString(favoriteHotels.length, ['отель', 'отеля', 'отелей'])}
