@@ -23,7 +23,7 @@ const NavBar = (): JSX.Element => {
 
 	const handleLogoutClick = () => {
 		setNeedLogOut(true);
-	}
+	};
 
 	return (
 		<nav className="checker__navbar">
@@ -34,6 +34,6 @@ const NavBar = (): JSX.Element => {
 			</div>
 		</nav>
 	);
-}
+};
 
 export default NavBar;

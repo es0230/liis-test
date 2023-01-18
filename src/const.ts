@@ -42,7 +42,7 @@ enum AuthDataFields {
 
 const LOCAL_STORAGE_KEY = 'auth';
 
-const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/
+const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 const PASSWORD_REGEXP = /^(?=.*[a-zA-Z0-9])(?=.{8,}$)/;
 
 export { EMAIL_REGEXP, PASSWORD_REGEXP, AuthDataFields, LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };

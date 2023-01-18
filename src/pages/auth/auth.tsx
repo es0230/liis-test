@@ -23,6 +23,6 @@ const Auth = (): JSX.Element => {
 			</div>
 		</div>
 	);
-}
+};
 
 export default Auth;

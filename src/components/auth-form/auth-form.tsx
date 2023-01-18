@@ -33,7 +33,7 @@ const AuthForm = (): JSX.Element => {
 		const { name, value } = evt.currentTarget;
 		const newIsValid = name === AuthDataFields.Email ? EMAIL_REGEXP.test(value) : PASSWORD_REGEXP.test(value);
 		setAuthValid({ ...authValid, [name]: newIsValid });
-	}
+	};
 
 	const handleAuthButtonClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
 		evt.preventDefault();
@@ -66,6 +66,6 @@ const AuthForm = (): JSX.Element => {
 			<button className="auth__submit submit-button clickable" onClick={handleAuthButtonClick}>Войти</button>
 		</form>
 	);
-}
+};
 
 export default AuthForm;

@@ -11,7 +11,7 @@ const FavoritesFilters = (): JSX.Element => {
 	const handleRatingToggleClick = (evt: React.MouseEvent<HTMLDivElement>) => {
 		const { toggleType, toggleOrder } = evt.currentTarget.dataset;
 		dispatch(setFavoritesFilter({ type: toggleType as FilterTypes, order: toggleOrder as FilterOrders }));
-	}
+	};
 
 	return (
 		<div className="favorites__filters">

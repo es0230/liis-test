@@ -18,7 +18,7 @@ const QueryForm = (): JSX.Element => {
 			dispatch(fetchHotels());
 			setNeedFetchHotels(false);
 		}
-	}, [needFetchHotels, dispatch])
+	}, [needFetchHotels, dispatch]);
 
 	const handleQueryFormFieldChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = evt.currentTarget;
@@ -30,7 +30,7 @@ const QueryForm = (): JSX.Element => {
 		dispatch(setQueryData(queryForm));
 		dispatch(resetHotels());
 		setNeedFetchHotels(true);
-	}
+	};
 
 	return (
 		<form action="" className="query-form content-item">

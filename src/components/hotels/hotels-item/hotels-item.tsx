@@ -22,7 +22,7 @@ const HotelsItem = ({ hotel, isFavorite }: HotelsItemProps): JSX.Element => {
 	const dispatch = useAppDispatch();
 	const duration = useAppSelector(selectDuration);
 	const checkIn = useAppSelector(selectCheckIn);
-	const handleFavoritesClick = (evt: React.MouseEvent<HTMLDivElement>) => {
+	const handleFavoritesClick = () => {
 		const favoriteHotel: FavoriteHotel = { hotel, checkIn, duration };
 		if (!isFavorite) {
 			dispatch(addToFavorites(favoriteHotel));

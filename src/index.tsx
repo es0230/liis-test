@@ -10,7 +10,7 @@ import { appDataInitialState } from './store/app-data/app-data';
 import { saveState } from './store/browser-storage';
 import { userDataInitialState } from './store/user-data/user-data';
 
-const container = document.getElementById('root')!;
+const container = document.getElementById('root') as HTMLElement;
 const root = createRoot(container);
 
 store.subscribe(throttle(() => {

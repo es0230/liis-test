@@ -14,7 +14,7 @@ const HotelsSection = (): JSX.Element => {
 			<HotelsList />
 		</div>
 	);
-}
+};
 
 export default HotelsSection;
 

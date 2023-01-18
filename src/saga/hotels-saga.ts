@@ -17,4 +17,4 @@ function* fetchHotelsWorker() {
 
 export function* hotelsWatcher() {
 	yield takeEvery(fetchHotels.type, fetchHotelsWorker);
-};
+}

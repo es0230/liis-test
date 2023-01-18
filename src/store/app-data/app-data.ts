@@ -1,6 +1,6 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import dayjs from 'dayjs'
-import { FilterOrders, FilterTypes, NameSpace } from '../../const'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import dayjs from 'dayjs';
+import { FilterOrders, FilterTypes, NameSpace } from '../../const';
 import { AppData } from '../../types/app-data';
 import { FavoriteHotel } from '../../types/favorite-hotel';
 import { FavoritesFilter } from '../../types/favorites-filter';
@@ -26,7 +26,7 @@ const initialState: AppData = {
 		'./img/carousel-images/carousel-3.jpg',
 		'./img/carousel-images/carousel-4.jpg'
 	],
-}
+};
 
 
 export const appData = createSlice({
@@ -41,7 +41,7 @@ export const appData = createSlice({
 			state.favoriteHotels = [
 				...state.favoriteHotels.slice(0, target),
 				...state.favoriteHotels.slice(target + 1),
-			]
+			];
 		},
 		setFavoritesFilter: (state, action: PayloadAction<FavoritesFilter>) => {
 			state.favoritesFilter = action.payload;

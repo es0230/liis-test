@@ -16,7 +16,7 @@ const FavoritesItem = ({ hotel }: FavoritesItemProps): JSX.Element => {
 
 	const dispatch = useAppDispatch();
 
-	const handleFavoritesClick = (evt: React.MouseEvent<HTMLDivElement>) => {
+	const handleFavoritesClick = () => {
 		dispatch(deleteFromFavorites(hotel));
 	};
 

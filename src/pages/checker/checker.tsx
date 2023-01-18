@@ -34,7 +34,7 @@ const Checker = (): JSX.Element => {
 				</div>
 			</main>
 		</div>
-	)
+	);
 };
 
 export default Checker;

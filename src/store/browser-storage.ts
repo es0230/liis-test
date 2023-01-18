@@ -19,13 +19,13 @@ export const deleteState = () => {
 	} catch (err) {
 		return undefined;
 	}
-}
+};
 
 export async function saveState(state: RootState) {
 	try {
 		const serializedState = JSON.stringify(state);
 		localStorage.setItem(LOCAL_STORAGE_KEY, serializedState);
 	} catch (err) {
-
+		console.log(err);
 	}
-};
+}
