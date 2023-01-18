@@ -22,6 +22,16 @@ const HotelsList = (): JSX.Element => {
 		);
 	}
 
+	if (!hotelsFetchFailed && hotels.length === 0) {
+		return (
+			<div className="checker__hotels-list checker__no-hotels">
+				По данному запросу нет отелей (O_O;)<br />
+				Попробуйте поменять параметры запроса
+			</div>
+		);
+
+	}
+
 	return (
 		<div className={`checker__hotels-list ${hotelsLoading ? 'checker__hotels-loading' : ''}`}>
 			{hotelsLoading ?

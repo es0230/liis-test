@@ -263,6 +263,7 @@ body {
 	display: flex;
 	margin: 0 32px;
 	gap: 8px;
+	user-select: none;
 }
 
 .favorites__filters>* {
@@ -468,7 +469,8 @@ body {
 }
 
 .checker__hotels-loading,
-.checker__hotels-fetch-failed {
+.checker__hotels-fetch-failed,
+.checker__no-hotels {
 	justify-content: center;
 	overflow: hidden;
 	height: 100%;

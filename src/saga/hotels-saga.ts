@@ -12,16 +12,9 @@ const fetchHotelsData = () => api.get<Hotel[]>(selectURLRequest(store.getState()
 
 function* fetchHotelsWorker() {
 
-
-	//if (result.statusText === 'OK') {
-	//	yield put(setHotels(result.data));
-	//} else {
-	//	yield put(setHotelsFetchFailed());
-	//}
-
 	try {
 		const result = yield* call(fetchHotelsData);
-		if (result.statusText === 'OK') {
+		if (result.status === 200) {
 			yield put(setHotels(result.data));
 		} else {
 			throw new Error(result.statusText);
