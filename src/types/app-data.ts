@@ -5,7 +5,7 @@ import { Hotel } from './hotels';
 export type AppData = {
 	location: string;
 	checkIn: string;
-	duration: number,
+	duration: string,
 	hotels: Hotel[],
 	favoriteHotels: FavoriteHotel[],
 	favoritesFilter: FavoritesFilter,

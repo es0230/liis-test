@@ -49,7 +49,7 @@ const HotelsItem = ({ hotel, isFavorite }: HotelsItemProps): JSX.Element => {
 				<div className="hotels__item-main">
 					<p className="hotels__date">{dayjs(checkIn).locale('ru').format('DD MMMM, YYYY')}</p>
 					<span>—</span>
-					<p className="hotels__duration">{getNumberedString(duration, ['день', 'дня', 'дней'])}</p>
+					<p className="hotels__duration">{getNumberedString(+duration, ['день', 'дня', 'дней'])}</p>
 				</div>
 				<div className="hotels__item-footer">
 					<div className="hotels__rating">

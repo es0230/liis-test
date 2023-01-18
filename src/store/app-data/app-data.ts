@@ -8,7 +8,7 @@ import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 
 const INITIAL_CITY = 'Москва';
-const INITIAL_DURATION = 1;
+const INITIAL_DURATION = '1';
 
 const initialState: AppData = {
 	location: INITIAL_CITY,

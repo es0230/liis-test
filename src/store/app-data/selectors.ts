@@ -14,7 +14,7 @@ export const selectHotels = (state: RootState): Hotel[] => state[NameSpace.Data]
 
 export const selectCheckIn = (state: RootState): string => state[NameSpace.Data].checkIn;
 
-export const selectDuration = (state: RootState): number => state[NameSpace.Data].duration;
+export const selectDuration = (state: RootState): string => state[NameSpace.Data].duration;
 
 export const selectFavoriteHotels = (state: RootState): FavoriteHotel[] => state[NameSpace.Data].favoriteHotels;
 
@@ -25,7 +25,7 @@ export const selectHotelsCarouselImages = (state: RootState): string[] => state[
 export const selectURLRequest = (state: RootState): string => {
 	const { location, checkIn, duration } = state[NameSpace.Data];
 
-	const checkOut = dayjs(checkIn).add(duration, 'day').format('YYYY-MM-DD');
+	const checkOut = dayjs(checkIn).add(+duration, 'day').format('YYYY-MM-DD');
 
 	return `cache.json?location=${location}&currency=${CURRENCY}&checkIn=${checkIn}&checkOut=${checkOut}&limit=10`;
 };
