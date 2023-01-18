@@ -11,7 +11,6 @@ const api = createAPI();
 const fetchHotelsData = () => api.get<Hotel[]>(selectURLRequest(store.getState()));
 
 function* fetchHotelsWorker() {
-
 	try {
 		const result = yield* call(fetchHotelsData);
 		if (result.status === 200) {

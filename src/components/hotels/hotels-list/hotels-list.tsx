@@ -17,7 +17,7 @@ const HotelsList = (): JSX.Element => {
 		return (
 			<div className="checker__hotels-list checker__hotels-fetch-failed">
 				Запрос не удался (╥_╥)<br />
-				Повторите запрос попозже или поменяйте параметры запроса
+				Повторите запрос попозже
 			</div>
 		);
 	}
@@ -29,7 +29,6 @@ const HotelsList = (): JSX.Element => {
 				Попробуйте поменять параметры запроса
 			</div>
 		);
-
 	}
 
 	return (

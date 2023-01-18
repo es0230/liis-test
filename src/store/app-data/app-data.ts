@@ -59,11 +59,8 @@ export const appData = createSlice({
 			state.hotels = action.payload;
 		},
 		fetchHotels: (state) => {
-			state.hotelsLoading = true;
-		},
-		resetHotels: (state) => {
-			state.hotels = [];
 			state.hotelsFetchFailed = false;
+			state.hotelsLoading = true;
 		},
 		resetState: (state) => {
 			state.location = INITIAL_CITY;
@@ -83,6 +80,6 @@ export const appData = createSlice({
 	},
 });
 
-export const { setHotelsFetchFailed, resetHotels, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+export const { setHotelsFetchFailed, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
 
 export { initialState as appDataInitialState };

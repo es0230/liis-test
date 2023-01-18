@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { MAX_DURATION, MIN_DURATION, QueryFormFields } from '../../const';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { fetchHotels, resetHotels, setQueryData } from '../../store/app-data/app-data';
+import { fetchHotels, setQueryData } from '../../store/app-data/app-data';
 import { selectInitialQueryData } from '../../store/app-data/selectors';
 import { QueryData } from '../../types/query-data';
 import dayjs from 'dayjs';
@@ -34,7 +34,6 @@ const QueryForm = (): JSX.Element => {
 	const handleQuerySending = (evt: React.MouseEvent<HTMLButtonElement>) => {
 		evt.preventDefault();
 		dispatch(setQueryData(queryForm));
-		dispatch(resetHotels());
 		setNeedFetchHotels(true);
 	};
 
