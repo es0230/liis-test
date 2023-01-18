@@ -10,4 +10,6 @@ export type AppData = {
 	favoriteHotels: FavoriteHotel[],
 	favoritesFilter: FavoritesFilter,
 	hotelsCarouselImages: string[],
+	hotelsLoading: boolean,
+	hotelsFetchFailed: boolean,
 };

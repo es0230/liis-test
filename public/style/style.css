@@ -467,11 +467,13 @@ body {
 	gap: 12px;
 }
 
-.checker__no-hotels {
+.checker__hotels-loading,
+.checker__hotels-fetch-failed {
 	justify-content: center;
 	overflow: hidden;
 	height: 100%;
 	align-items: center;
+	text-align: center;
 }
 
 .favorites__list,

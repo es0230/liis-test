@@ -1,6 +1,6 @@
 import { getNumberedString } from '../../../const';
 import { useAppSelector } from '../../../hooks/hooks';
-import { selectCheckIn, selectDuration, selectFavoriteHotels, selectHotels } from '../../../store/app-data/selectors';
+import { selectCheckIn, selectDuration, selectFavoriteHotels, selectHotels, selectHotelsFetchFailed, selectHotelsLoading } from '../../../store/app-data/selectors';
 import Divider from '../../divider/divider';
 import HotelsItem from '../hotels-item/hotels-item';
 import CircularProgress from '@mui/material/CircularProgress';
@@ -10,10 +10,21 @@ const HotelsList = (): JSX.Element => {
 	const favoriteHotels = useAppSelector(selectFavoriteHotels);
 	const checkIn = useAppSelector(selectCheckIn);
 	const duration = useAppSelector(selectDuration);
+	const hotelsLoading = useAppSelector(selectHotelsLoading);
+	const hotelsFetchFailed = useAppSelector(selectHotelsFetchFailed);
+
+	if (hotelsFetchFailed) {
+		return (
+			<div className="checker__hotels-list checker__hotels-fetch-failed">
+				Запрос не удался (╥_╥)<br />
+				Повторите запрос попозже или поменяйте параметры запроса
+			</div>
+		);
+	}
 
 	return (
-		<div className={`checker__hotels-list ${hotels.length === 0 ? 'checker__no-hotels' : ''}`}>
-			{hotels.length === 0 ?
+		<div className={`checker__hotels-list ${hotelsLoading ? 'checker__hotels-loading' : ''}`}>
+			{hotelsLoading ?
 				<CircularProgress sx={{ color: 'var(--accent-color)' }} /> :
 				<>
 					<div className="hotels__favorite-count">

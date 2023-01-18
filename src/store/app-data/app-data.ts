@@ -26,6 +26,8 @@ const initialState: AppData = {
 		'./img/carousel-images/carousel-3.jpg',
 		'./img/carousel-images/carousel-4.jpg'
 	],
+	hotelsLoading: false,
+	hotelsFetchFailed: false,
 };
 
 
@@ -53,13 +55,15 @@ export const appData = createSlice({
 			state.duration = duration;
 		},
 		setHotels: (state, action: PayloadAction<Hotel[]>) => {
+			state.hotelsLoading = false;
 			state.hotels = action.payload;
 		},
 		fetchHotels: (state) => {
-			return state;
+			state.hotelsLoading = true;
 		},
 		resetHotels: (state) => {
 			state.hotels = [];
+			state.hotelsFetchFailed = false;
 		},
 		resetState: (state) => {
 			state.location = INITIAL_CITY;
@@ -71,10 +75,14 @@ export const appData = createSlice({
 				type: FilterTypes.Rating,
 				order: FilterOrders.Asc
 			};
+		},
+		setHotelsFetchFailed: (state) => {
+			state.hotelsLoading = false;
+			state.hotelsFetchFailed = true;
 		}
 	},
 });
 
-export const { resetHotels, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+export const { setHotelsFetchFailed, resetHotels, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
 
 export { initialState as appDataInitialState };

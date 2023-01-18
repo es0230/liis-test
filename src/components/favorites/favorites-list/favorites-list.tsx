@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { FilterOrders, FilterTypes } from '../../../const';
 import { useAppSelector } from '../../../hooks/hooks';
 import { selectFavoritesFilter, selectFavoriteHotels } from '../../../store/app-data/selectors';
@@ -8,10 +7,6 @@ import FavoritesItem from '../favorites-item/favorites-item';
 const FavoritesList = (): JSX.Element => {
 	const favoriteHotels = useAppSelector(selectFavoriteHotels);
 	const favoritesFilter = useAppSelector(selectFavoritesFilter);
-
-	useEffect(() => {
-		console.log(favoriteHotels);
-	});
 
 	const sortedHotels = favoriteHotels.slice().sort((a, b) => {
 		const { type, order } = favoritesFilter;

@@ -22,6 +22,10 @@ export const selectFavoritesFilter = (state: RootState): FavoritesFilter => stat
 
 export const selectHotelsCarouselImages = (state: RootState): string[] => state[NameSpace.Data].hotelsCarouselImages;
 
+export const selectHotelsFetchFailed = (state: RootState): boolean => state[NameSpace.Data].hotelsFetchFailed;
+
+export const selectHotelsLoading = (state: RootState): boolean => state[NameSpace.Data].hotelsLoading;
+
 export const selectURLRequest = (state: RootState): string => {
 	const { location, checkIn, duration } = state[NameSpace.Data];
 
