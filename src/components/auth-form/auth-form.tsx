@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../hooks/hooks';
 import { fetchHotels } from '../../store/app-data/app-data';
 import { logIn } from '../../store/user-data/user-data';
 import { AuthData } from '../../types/auth-data';
+import { AuthValid } from '../../types/auth-valid';
 
 const initialAuthData = {
 	[AuthDataFields.Email]: '',
@@ -16,13 +17,12 @@ const initialAuthValid = {
 	[AuthDataFields.Password]: null,
 };
 
-
 const AuthForm = (): JSX.Element => {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 
 	const [authData, setAuthData] = useState<AuthData>(initialAuthData);
-	const [authValid, setAuthValid] = useState(initialAuthValid);
+	const [authValid, setAuthValid] = useState<AuthValid>(initialAuthValid);
 
 	const handleInputChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value } = evt.currentTarget;
@@ -37,14 +37,15 @@ const AuthForm = (): JSX.Element => {
 
 	const handleAuthButtonClick = (evt: React.MouseEvent<HTMLButtonElement>) => {
 		evt.preventDefault();
-		dispatch(logIn());
-		dispatch(fetchHotels());
-		navigate(AppRoute.Checker);
-		setAuthData(initialAuthData);
-		setAuthValid(initialAuthValid);
-		//if (Object.values(authValid).every((el) => el === true)) {
-
-		//}
+		const { email, password } = authValid;
+		setAuthValid({ [AuthDataFields.Email]: Boolean(email), [AuthDataFields.Password]: Boolean(password) });
+		if (Object.values(authValid).every((el) => el)) {
+			dispatch(logIn());
+			dispatch(fetchHotels());
+			navigate(AppRoute.Checker);
+			setAuthData(initialAuthData);
+			setAuthValid(initialAuthValid);
+		}
 	};
 
 	return (
@@ -53,12 +54,12 @@ const AuthForm = (): JSX.Element => {
 			<div className="auth__inputs-container">
 				<div className="auth__input-wrapper input-wrapper">
 					<label htmlFor={AuthDataFields.Email} className={`auth__label ${authValid[AuthDataFields.Email] !== false ? '' : 'invalid-label'}`}>Логин</label>
-					<input onBlur={handleInputBlur} onChange={handleInputChange} type="email" className={`auth__input input ${authValid[AuthDataFields.Email] !== false ? '' : 'invalid-input'}`} id="email" name={AuthDataFields.Email} />
+					<input onBlur={handleInputBlur} onChange={handleInputChange} value={authData.email} type="email" className={`auth__input input ${authValid[AuthDataFields.Email] !== false ? '' : 'invalid-input'}`} id="email" name={AuthDataFields.Email} />
 					{authValid[AuthDataFields.Email] !== false ? <></> : <p className='auth__input-error'>Некорректный email</p>}
 				</div>
 				<div className="auth__input-wrapper input-wrapper">
 					<label htmlFor={AuthDataFields.Password} className={`auth__label ${authValid[AuthDataFields.Password] !== false ? '' : 'invalid-label'}`}>Пароль</label>
-					<input onBlur={handleInputBlur} onChange={handleInputChange} type="password" className={`auth__input input ${authValid[AuthDataFields.Password] !== false ? '' : 'invalid-input'}`} id="password" name={AuthDataFields.Password} />
+					<input onBlur={handleInputBlur} onChange={handleInputChange} value={authData.password} type="password" className={`auth__input input ${authValid[AuthDataFields.Password] !== false ? '' : 'invalid-input'}`} id="password" name={AuthDataFields.Password} />
 					{authValid[AuthDataFields.Password] !== false ? <></> : <p className='auth__input-error'>Некорректный пароль</p>}
 				</div>
 			</div>
