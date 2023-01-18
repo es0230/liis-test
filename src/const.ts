@@ -45,4 +45,7 @@ const LOCAL_STORAGE_KEY = 'auth';
 const EMAIL_REGEXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 const PASSWORD_REGEXP = /^(?=.*[a-zA-Z0-9])(?=.{8,}$)/;
 
-export { EMAIL_REGEXP, PASSWORD_REGEXP, AuthDataFields, LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
+const MIN_DURATION = 1;
+const MAX_DURATION = 31;
+
+export { MIN_DURATION, MAX_DURATION, EMAIL_REGEXP, PASSWORD_REGEXP, AuthDataFields, LOCAL_STORAGE_KEY, getNumberedString, QueryFormFields, AppRoute, NameSpace, FilterOrders, FilterTypes };
