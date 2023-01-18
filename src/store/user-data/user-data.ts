@@ -20,3 +20,5 @@ export const userData = createSlice({
 });
 
 export const { logIn, logOut } = userData.actions;
+
+export { initialState as userDataInitialState };

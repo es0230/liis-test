@@ -7,16 +7,25 @@ import { FavoritesFilter } from '../../types/favorites-filter';
 import { Hotel } from '../../types/hotels';
 import { QueryData } from '../../types/query-data';
 
+const INITIAL_CITY = 'Москва';
+const INITIAL_DURATION = 1;
+
 const initialState: AppData = {
-	location: 'Москва',
+	location: INITIAL_CITY,
 	checkIn: dayjs().format('YYYY-MM-DD'),
-	duration: 1,
+	duration: INITIAL_DURATION,
 	hotels: [],
 	favoriteHotels: [],
 	favoritesFilter: {
 		type: FilterTypes.Rating,
 		order: FilterOrders.Asc
-	}
+	},
+	hotelsCarouselImages: [
+		'./img/carousel-images/carousel-1.jpg',
+		'./img/carousel-images/carousel-2.jpg',
+		'./img/carousel-images/carousel-3.jpg',
+		'./img/carousel-images/carousel-4.jpg'
+	],
 }
 
 
@@ -53,9 +62,9 @@ export const appData = createSlice({
 			state.hotels = [];
 		},
 		resetState: (state) => {
-			state.location = 'Москва';
+			state.location = INITIAL_CITY;
 			state.checkIn = dayjs().format('YYYY-MM-DD');
-			state.duration = 1;
+			state.duration = INITIAL_DURATION;
 			state.hotels = [];
 			state.favoriteHotels = [];
 			state.favoritesFilter = {
@@ -67,3 +76,5 @@ export const appData = createSlice({
 });
 
 export const { resetHotels, resetState, setFavoritesFilter, addToFavorites, deleteFromFavorites, setHotels, fetchHotels, setQueryData } = appData.actions;
+
+export { initialState as appDataInitialState };

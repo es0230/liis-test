@@ -26,5 +26,3 @@ const Auth = (): JSX.Element => {
 }
 
 export default Auth;
-
-//разобраться со стилями и перенаправлением
